@@ -9,6 +9,7 @@ pathout = os.path.join("Resources",
 #variables i need to work with
 
 
+
 #total month needs to be set to 0 so I can count
 
 totalMonth = 0
