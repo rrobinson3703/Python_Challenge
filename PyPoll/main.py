@@ -18,11 +18,9 @@ pathout = os.path.join("Resources",
 
 #Variables I need to use
 
-votes =
-0
+votes = 0
 
-winner_votes =
-0
+winner_votes = 0
 
 total_candidates =
 0

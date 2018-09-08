@@ -28,19 +28,13 @@ revenue_change_list = []
 
 month_of_change = []
 
-greatestIncrease = ["",
-0]
+greatestIncrease = ["",0]
 
-greatestDecrease = ["",
-99999999999]
-
+greatestDecrease = ["",99999999999]
 
 
 #Read the budget_data.csv file
-
-with 
-open(cvspath) 
-as revenueData:
+with open(cvspath) as revenueData:
 
    reader = csv.DictReader(revenueData)
 
@@ -48,67 +42,49 @@ as revenueData:
 
 #I need to loop through the data to collect the answers
 
-   for row
-in reader:
+   for row in reader:
 
 
 
        #Totaling
 
-           totalMonth = totalMonth
-+ 
-1
+           totalMonth = totalMonth + 1
 
-           totalRevenue = totalRevenue
-+ 
-int(row["Revenue"])
+           totalRevenue = totalRevenue + int(row["Revenue"])
 
 
 
 #changes of revenue calculations
 
-           revenue_change =
-int(row["Revenue"])
-- previousRevenue
+           revenue_change = int(row["Revenue"]) - previousRevenue
 
-           previousRevenue =
-int(row["Revenue"])
+           previousRevenue =int(row["Revenue"])
 
-           month_of_change = month_of_change
-+ [row["Date"]]
+           month_of_change = month_of_change + [row["Date"]]
 
 
 
            #Greatest Increase value
 
-           if (revenue_change
-> greatestIncrease[1]):
+           if (revenue_change> greatestIncrease[1]):
 
-               greatestIncrease[1]
-= revenue_change
+               greatestIncrease[1]= revenue_change
 
-               greatestIncrease[0]
-= row["Date"]
+               greatestIncrease[0]= row["Date"]
 
 
 
-           if (revenue_change
-< greatestDecrease[1]):
+           if (revenue_change< greatestDecrease[1]):
 
-               greatestDecrease[0]
-= row["Date"]
+               greatestDecrease[0]= row["Date"]
 
-               greatestDecrease[1]
-= revenue_change
+               greatestDecrease[1]= revenue_change
 
         
 
 # calculate the average revenue outside of the loop
 
-revenue_avg =
-sum(revenue_change_list)
-/ 
-len(revenue_change_list)
+revenue_avg = sum(revenue_change_list)/ len(revenue_change_list)
 
 
 
@@ -116,13 +92,9 @@ len(revenue_change_list)
 
 #print the outcomes
 
-output = (
+output = (f"Total Months:{totalMonth}\n"
 
-    f"Total Months:
-{totalMonth}\n"
-
-    f"Total Revenue:
-{totalRevenue}\n"
+    f"Total Revenue:{totalRevenue}\n"
 
     f"Average Revenue Change: ${revenue_avg}\n"
 
@@ -130,9 +102,7 @@ output = (
 {greatestIncrease[0]} ${greatestIncrease[1]}\n"
 
     f"Greatest decrease in Revenue:
-{greatestDecrease[0]} ${greatestDecrease[1]}\n"
-
-)
+{greatestDecrease[0]} ${greatestDecrease[1]}\n")
 
 
 
@@ -142,9 +112,8 @@ print(output)
 
 #Write to the text path
 
-with 
-open(pathout, 
-"w") as txt_file:
+with open(pathout, "w") as txt_file:
 
     txt_file.write(output)
+
 
